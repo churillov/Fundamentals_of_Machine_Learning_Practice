@@ -86,11 +86,11 @@ plt.plot(np.arange(1, 21), test_score)
 # Загрузим данные: pip install python-mnist
 
 
-mndata = MNIST('', gz=True)
+mndata = MNIST('samples')
 images, labels = mndata.load_training()
 
 # Далее мы берем только 5000 картинок и меток, чтобы не ждать обучения слишком долго:
-images, labels = np.array(images)[:5000, :], np.array(labels)[:, 5000]
+images, labels = np.array(images)[:5000, :], np.array(labels)[:5000]
 
 # Так вы можете посмотреть на данные. Например, это картинка номер 0. Можете посмотреть на любую другую!
 plt.imshow(images[0].reshape(28, 28))
@@ -110,5 +110,5 @@ knn = KNeighborsClassifier(n_neighbors=30)
 
 knn.fit(x_train3, y_train3)
 
-accuracy = accuracy(y_test3, knn.predict(x_test3))
+accuracy = accuracy_score(y_test3, knn.predict(x_test3))
 print(accuracy)
